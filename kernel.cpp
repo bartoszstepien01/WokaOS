@@ -1,5 +1,7 @@
+#include "drivers/screen.hpp"
+
 extern "C" void kmain()
 {
-    char* vidmem = (char*) 0xB8000;
-    vidmem[0] = 'a';
+    ScreenDriver::clearScreen(red, green);
+    ScreenDriver::printCharacter('a', 0, 24, red, green);
 }
