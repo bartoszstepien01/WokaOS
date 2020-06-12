@@ -2,6 +2,7 @@
 
 extern "C" void kmain()
 {
-    ScreenDriver::clearScreen(red, green);
-    ScreenDriver::printCharacter('a', 0, 24, red, green);
+    ScreenDriver::setColour(lightRed, white);
+    ScreenDriver::clearScreen();
+    ScreenDriver::printString("WokaOS Alpha Version");
 }
