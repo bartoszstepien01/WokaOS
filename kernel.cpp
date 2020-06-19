@@ -1,6 +1,5 @@
 #include "drivers/screen.hpp"
 #include "drivers/keyboard.hpp"
-#include "drivers/cmos.hpp"
 
 extern "C" void kmain()
 {
@@ -11,6 +10,9 @@ extern "C" void kmain()
     while(true)
     {
         char key = KeyboardDriver::keyToChar(KeyboardDriver::getKey());
-        if(key != 0) ScreenDriver::printCharacter(key);
+        if(key != 0)
+        {
+            ScreenDriver::printCharacter(key);
+        }
     }
 }

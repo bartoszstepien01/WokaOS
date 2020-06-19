@@ -21,4 +21,4 @@ linker:
 	$(LINKER) $(LINKER_FLAGS) -o $(OUTPUT_FOLDER)kernel.bin $(OUTPUT_FOLDER)loader.o $(OUTPUT_FOLDER)kernel.o
 
 emulate:
-	$(EMULATOR) -kernel $(OUTPUT_FOLDER)kernel.bin
+	$(EMULATOR) -kernel $(OUTPUT_FOLDER)kernel.bin -soundhw pcspk
