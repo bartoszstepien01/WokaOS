@@ -58,4 +58,39 @@ namespace CMOSDriver
         Ports::outport(0x70, 0x32);
         return Ports::inport(0x71);
     }
+
+    string weekdayToString(Weekday weekday)
+    {
+        switch(weekday)
+        {
+            case Sunday: return "Sunday";
+            case Monday: return "Monday";
+            case Tuesday: return "Tuesday";
+            case Wednesday: return "Wednesday";
+            case Thursday: return "Thursday";
+            case Friday: return "Friday";
+            case Saturday: return "Saturday";
+            default: return "";
+        }
+    }
+
+    string monthToString(Month month)
+    {
+        switch(month)
+        {
+            case January: return "January";
+            case February: return "February";
+            case March: return "March";
+            case April: return "April";
+            case May: return "May";
+            case June: return "June";
+            case July: return "July";
+            case August: return "August";
+            case September: return "September";
+            case October: return "October";
+            case November: return "November";
+            case December: return "December";
+            default: return "";
+        }
+    }
 }
