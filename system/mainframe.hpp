@@ -44,6 +44,8 @@ namespace MainFrame
         string weekday = CMOSDriver::weekdayToString(CMOSDriver::getWeekday());
         len += String::length(weekday) + 2;
         ScreenDriver::printStringAtPosition(weekday, 78 - len, 1);
+        for(int i = 78 - len - 1; i >= 20; i--)
+            ScreenDriver::printCharacterAtPosition(0, i, 1);
     }
 
     void printTitleBar(string systemName)
@@ -84,5 +86,9 @@ namespace MainFrame
         printTitleBar("Woka OS Dev");
         printFrame();
         printInfoBar("Program hint", "Program hint 2");
+        while(true)
+        {
+            printHourAndDate();
+        }
     }
 }
