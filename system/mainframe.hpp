@@ -1,9 +1,15 @@
 #pragma once
 #include "../drivers/screen.hpp"
 #include "../drivers/cmos.hpp"
+#include "program.hpp"
 
 namespace MainFrame
 {
+    namespace
+    {
+        Program currentProgram;
+    }
+
     void printWithLeadingZeros(string text, int x, int y)
     {
         switch(String::length(text))
@@ -85,10 +91,21 @@ namespace MainFrame
         ScreenDriver::disableCursor();
         printTitleBar("Woka OS Dev");
         printFrame();
-        printInfoBar("Program hint", "Program hint 2");
+    }
+
+    void setProgram(Program program)
+    {
+        printInfoBar(program.getProgramHint1(), program.getProgramHint2());
+        currentProgram = program;
+        program.start();
+    }
+
+    void runLoop()
+    {
         while(true)
         {
             printHourAndDate();
+            currentProgram.loop();
         }
     }
 }
