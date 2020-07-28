@@ -7,7 +7,7 @@ namespace MainFrame
 {
     namespace
     {
-        Program currentProgram;
+        Program* currentProgram;
     }
 
     void printWithLeadingZeros(string text, int x, int y)
@@ -93,11 +93,11 @@ namespace MainFrame
         printFrame();
     }
 
-    void setProgram(Program program)
+    void setProgram(Program* program)
     {
-        printInfoBar(program.getProgramHint1(), program.getProgramHint2());
+        printInfoBar(program->getProgramHint1(), program->getProgramHint2());
         currentProgram = program;
-        program.start();
+        program->start();
     }
 
     void runLoop()
@@ -105,7 +105,8 @@ namespace MainFrame
         while(true)
         {
             printHourAndDate();
-            currentProgram.loop();
+            if (currentProgram != nullptr)
+                currentProgram->loop();
         }
     }
 }
