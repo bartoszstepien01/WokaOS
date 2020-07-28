@@ -271,4 +271,10 @@ namespace ScreenDriver
                     break; 
             }
     }
+
+    void setCellColour(uint8 x, uint8 y, Colour foregroundColour, Colour backgroundColour)
+    {
+        uint16 colour = (backgroundColour << 4) | (foregroundColour & 0x0F);
+        videoMemory[((y * 80 + x)) * 2 + 1] = colour;
+    }
 };

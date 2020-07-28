@@ -10,6 +10,9 @@ namespace MainFrame
         Program* currentProgram;
     }
 
+    Colour backgroundColour;
+    Colour foregroundColour;
+
     void printWithLeadingZeros(string text, int x, int y)
     {
         switch(String::length(text))
@@ -86,6 +89,8 @@ namespace MainFrame
 
     void draw(Colour foregroundColour, Colour backgroundColour)
     {
+        MainFrame::foregroundColour = foregroundColour;
+        MainFrame::backgroundColour = backgroundColour;
         ScreenDriver::setColour(foregroundColour, backgroundColour);
         ScreenDriver::clearScreen();
         ScreenDriver::disableCursor();

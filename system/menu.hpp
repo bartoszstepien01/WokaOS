@@ -19,9 +19,15 @@ public:
     
     void start()
     {
-        ScreenDriver::printCharacterAtPosition('>', 3, 3);
-        for(uint8 i = 0; i < optionsCount; i++)
-            ScreenDriver::printStringAtPosition(options[i], 5, i+3);
+        ScreenDriver::printStringAtPosition(options[0], 4, 3);
+        ScreenDriver::printCharacterAtPosition('>', 76, 3);
+        for(uint8 i = 3; i <= 76; i++)
+            ScreenDriver::setCellColour(i, cursorPosition+3, MainFrame::backgroundColour, MainFrame::foregroundColour);
+        for(uint8 i = 1; i < optionsCount; i++)
+        {
+            ScreenDriver::printStringAtPosition(options[i], 4, i+3);
+            ScreenDriver::printCharacterAtPosition('>', 76, i+3);
+        }
     }
 
     void loop()
@@ -30,19 +36,21 @@ public:
 
         if(current_key == S)
         {
+            for(uint8 i = 3; i <= 76; i++)
+                ScreenDriver::setCellColour(i, cursorPosition+3, MainFrame::foregroundColour, MainFrame::backgroundColour);
             cursorPosition++;
             if(cursorPosition >= optionsCount) cursorPosition = 0;
-            for(uint8 i = 0; i < optionsCount; i++)
-                ScreenDriver::printCharacterAtPosition(0, 3, i+3);
-            ScreenDriver::printCharacterAtPosition('>', 3, cursorPosition+3);
+            for(uint8 i = 3; i <= 76; i++)
+                ScreenDriver::setCellColour(i, cursorPosition+3, MainFrame::backgroundColour, MainFrame::foregroundColour);
         }
         if(current_key == W)
         {
+            for(uint8 i = 3; i <= 76; i++)
+                ScreenDriver::setCellColour(i, cursorPosition+3, MainFrame::foregroundColour, MainFrame::backgroundColour);
             cursorPosition--;
             if(cursorPosition < 0) cursorPosition = optionsCount - 1;
-            for(uint8 i = 0; i < optionsCount; i++)
-                ScreenDriver::printCharacterAtPosition(0, 3, i+3);
-            ScreenDriver::printCharacterAtPosition('>', 3, cursorPosition+3);
+            for(uint8 i = 3; i <= 76; i++)
+                ScreenDriver::setCellColour(i, cursorPosition+3, MainFrame::backgroundColour, MainFrame::foregroundColour);
         }
     }
 };
