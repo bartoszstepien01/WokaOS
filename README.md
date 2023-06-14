@@ -1,2 +1,4 @@
 # WokaOS
-DOS-like operating system...
+A toy operating system
+
+Will be finished some day
